@@ -87,6 +87,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     "src/_includes/components/forkawesome": "assets/forkawesome",
   });
+  
 
 
   // Add plugins
@@ -97,6 +98,10 @@ module.exports = function (eleventyConfig) {
 
   // Add shortcodes
   eleventyConfig.addNunjucksAsyncShortcode("image", image);
+
+  eleventyConfig.addPairedShortcode("markdown", (content) => {
+    return markdownLibrary.render(content);
+  });
 
   // Alias `layout: post` to `layout: layouts/post.njk`
   eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
